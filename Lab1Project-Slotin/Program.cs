@@ -32,10 +32,11 @@ static void task2()
 
     Countdown timer = new();
 
-    var sub1 = new Subscriber(timer, "Rufus");
-    var sub2 = new Subscriber(timer, "Bisya");
+    var subs1 = new Subscriber(timer, "Виктор Слотин");
+    var subs2 = new Subscriber(timer, "Анастасия Петрова");
+    var subs3 = new Subscriber(timer, "Александр Калиничев");
 
-    Console.WriteLine("Something happens...");
+    Console.WriteLine("Ожидание...");
     timer.ItHappens(1000);
     Console.WriteLine();
     Console.WriteLine("0 - Вернуться в меню");
