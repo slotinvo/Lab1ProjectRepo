@@ -27,23 +27,25 @@ namespace MyLib
     }
     public class Subscriber
     {
-        private readonly string name;
-        private readonly string[] subscriptions;
+        public readonly string name;
+        public readonly string[] subscriptions;
+        public string echo;
         public Subscriber(string name, string[] subscriptions)
         {
             this.name = name;
             this.subscriptions = subscriptions;
+            this.echo = "";
         }
         public void NewNotification(Countdown cd)
         {
             cd.handler += DisplayMessage;
         }
-
         private void DisplayMessage(object? sender, string[] args)
         {
             if (subscriptions.Contains(args[0]))
             {
-                Console.WriteLine($"{name}! {args[1]}");
+                this.echo = name + "!" + args[1];
+                Console.WriteLine(echo);
             }
         }
     }
