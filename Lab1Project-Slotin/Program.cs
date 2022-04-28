@@ -30,13 +30,27 @@ static void task2()
     Console.Clear();
     Console.WriteLine("Задание 2");
 
-    Countdown timer = new();
+    Countdown[] countdowns = { 
+        new Countdown("Охота и рыбалка"),
+        new Countdown("Карусель"), 
+        new Countdown("Новости 24") 
+    };
+    Subscriber[] subscribers = {
+        new Subscriber("Виктор Слотин", new string[]{ "Охота и рыбалка", "Новости 24" }),
+        new Subscriber("Анастасия Петрова", new string[]{ "Охота и рыбалка", "Карусель" }),
+        new Subscriber("Александр Калиничев", new string[]{ "Карусель", "Новости 24" })
+    };
 
-    var sub1 = new Subscriber(timer, "Rufus");
-    var sub2 = new Subscriber(timer, "Bisya");
+    Countdown ChannelWithNewContent = countdowns[0];
 
-    Console.WriteLine("Something happens...");
-    timer.ItHappens(1000);
+    foreach (Subscriber subs in subscribers)
+    {
+        subs.NewNotification(ChannelWithNewContent);
+    }
+
+    Console.WriteLine("Ожидание...");
+    string mess = "На канале " + ChannelWithNewContent.channelName + " вышло новое видео!";
+    ChannelWithNewContent.Mailing(1000, mess);
     Console.WriteLine();
     Console.WriteLine("0 - Вернуться в меню");
     while (char.ToLower(Console.ReadKey(true).KeyChar) != '0')
