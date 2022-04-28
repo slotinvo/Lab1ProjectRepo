@@ -10,11 +10,11 @@ namespace MyLib
     {
         public event EventHandler<string>? handler;
 
-        public void ItHappens(int delay)
+        public void ItHappens(int timeSleep)
         {
-            Thread.Sleep(delay);
-            Console.WriteLine("Countdown send a message!");
-            handler?.Invoke(this, "nothing really happens...");
+            Thread.Sleep(timeSleep);
+            Console.WriteLine("Отправка рассылки от Countdown!");
+            handler?.Invoke(this, "Привет!");
         }
     }
     public class Subscriber
@@ -28,7 +28,7 @@ namespace MyLib
 
         private void DisplayMessage(object? sender, string e)
         {
-            Console.WriteLine($"Subscriber {name} reacts to event. Publisher says: {e}");
+            Console.WriteLine($"Подписчик {name} реагирует на событие Countdown. Сообщение: {e}");
         }
     }
 }
