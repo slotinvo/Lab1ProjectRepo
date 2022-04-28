@@ -29,11 +29,14 @@ namespace MyLib
     {
         private readonly string name;
         private readonly string[] subscriptions;
-        public Subscriber(Countdown cd, string name, string[] subscriptions)
+        public Subscriber(string name, string[] subscriptions)
         {
-            cd.handler += DisplayMessage;
             this.name = name;
             this.subscriptions = subscriptions;
+        }
+        public void NewNotification(Countdown cd)
+        {
+            cd.handler += DisplayMessage;
         }
 
         private void DisplayMessage(object? sender, string[] args)
